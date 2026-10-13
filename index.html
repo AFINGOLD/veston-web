@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Veston Capital conecta capital con oportunidades inmobiliarias residenciales: compra, reforma y venta de activos con contrato individual por operación.">
+<title>Veston Capital · Inversión inmobiliaria residencial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: navy brand bands alternating with calm paper sections; one-column editorial flow, grids for sequences */
+:root{
+  --navy:#14254a; --navy-2:#1f3a6e; --ink:#13213d; --muted:#56627a;
+  --paper:#f6f7fa; --surface:#ffffff; --line:#d9dee8; --accent:#2f5aa8;
+  --on-navy:#ffffff; --on-navy-muted:#b9c5dc;
+  --display:"Source Serif 4", Georgia, "Times New Roman", serif;
+  --body:"Instrument Sans", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ink:#e8ecf4; --muted:#9aa6bd; --paper:#0d1424; --surface:#131c31; --line:#26324c; --accent:#8fb0ee; color-scheme:dark }}
+:root[data-theme="dark"]{ --ink:#e8ecf4; --muted:#9aa6bd; --paper:#0d1424; --surface:#131c31; --line:#26324c; --accent:#8fb0ee; color-scheme:dark }
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+h1,h2,h3{font-family:var(--display);font-weight:700;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.2rem,5.4vw,4rem);letter-spacing:-.01em}
+h2{font-size:clamp(1.75rem,3.4vw,2.6rem)}
+h3{font-size:1.35rem}
+p{margin:0}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--accent)}
+.navy .eyebrow{color:var(--on-navy-muted)}
+section{padding-block:clamp(64px,9vw,112px)}
+.lead{font-size:1.15rem;color:var(--muted);max-width:62ch}
+.navy{background:radial-gradient(120% 140% at 85% 0%,var(--navy-2) 0%,var(--navy) 55%,#0c1830 100%);color:var(--on-navy)}
+.navy .lead{color:var(--on-navy-muted)}
+.btn{display:inline-flex;align-items:center;gap:.5em;font:600 1rem var(--body);padding:.85em 1.4em;border-radius:999px;text-decoration:none;border:1px solid transparent;transition:transform .15s ease,background .15s ease}
+.btn:hover{transform:translateY(-1px)}
+.btn-light{background:#fff;color:var(--navy)}
+.btn-ghost{border-color:rgba(255,255,255,.4);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+
+/* header */
+header.top{position:absolute;inset-inline:0;top:env(safe-area-inset-top,0px);z-index:5;color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:22px}
+.logo{display:inline-flex;align-items:center;gap:8px;font:700 1.6rem/1 var(--body);letter-spacing:-.02em;text-decoration:none;color:#fff}
+.logo svg{width:22px;height:22px}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:.95rem}
+.nav ul a{text-decoration:none;color:var(--on-navy-muted)}
+.nav ul a:hover{color:#fff}
+@media (max-width:820px){.nav ul{display:none}}
+
+/* hero */
+.hero{padding-block:160px 96px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-12%;bottom:-40%;width:70%;aspect-ratio:1;max-width:100%;border-radius:50%;border:1px solid rgba(255,255,255,.08);box-shadow:0 0 0 60px rgba(255,255,255,.02),0 0 0 140px rgba(255,255,255,.015);pointer-events:none}
+.hero .wrap{position:relative;z-index:1;display:grid;gap:28px}
+.hero h1{max-width:16ch}
+.hero .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+
+/* key figures */
+.figures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid rgba(255,255,255,.15);margin-top:56px}
+.fig{padding:24px 20px 4px 0;display:grid;gap:4px}
+.fig + .fig{padding-left:20px;border-left:1px solid rgba(255,255,255,.15)}
+.fig b{font:700 clamp(1.9rem,3.6vw,2.8rem)/1 var(--display);font-variant-numeric:tabular-nums}
+.fig span{font-size:.9rem;color:var(--on-navy-muted)}
+@media (max-width:760px){.figures{grid-template-columns:repeat(2,minmax(0,1fr))}.fig:nth-child(3){padding-left:0;border-left:0}.fig:nth-child(n+3){border-top:1px solid rgba(255,255,255,.15)}}
+
+/* about */
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(32px,6vw,80px);align-items:start}
+@media (max-width:860px){.split{grid-template-columns:1fr}}
+.points{display:grid;gap:28px;list-style:none;margin:0;padding:0}
+.points li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:14px;color:var(--muted)}
+.points li strong{color:var(--ink);font-weight:600}
+.tick{width:22px;height:22px;margin-top:3px;color:var(--accent)}
+
+/* model */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;margin-top:56px}
+.step{padding:0 24px 0 0;display:grid;gap:10px;align-content:start}
+.step + .step{padding-left:24px;border-left:1px solid rgba(255,255,255,.15)}
+.step .n{font:600 .85rem var(--body);color:var(--on-navy-muted);font-variant-numeric:tabular-nums}
+.step h3{font-size:1.6rem;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.35)}
+.step .k{font-weight:600}
+.step p:last-child{color:var(--on-navy-muted);font-size:.97rem}
+@media (max-width:860px){.steps{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}.step:nth-child(3){padding-left:0;border-left:0}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.step,.step + .step{padding:0;border-left:0}}
+
+/* proposal */
+.terms{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,64px);margin-top:48px}
+@media (max-width:860px){.terms{grid-template-columns:1fr}}
+.big{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:clamp(24px,4vw,40px);display:grid;gap:22px}
+.big .pct{font:700 clamp(4rem,10vw,6.5rem)/.9 var(--display);color:var(--accent);font-variant-numeric:tabular-nums}
+.big .pct small{display:block;font:500 1rem var(--body);color:var(--muted);margin-top:12px}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.checks li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:12px}
+.spec{display:grid;align-content:start}
+.spec div{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding-block:22px;border-bottom:1px solid var(--line)}
+.spec div:first-child{border-top:1px solid var(--line)}
+.spec dt{color:var(--muted)}
+.spec dd{margin:0;font:700 1.7rem var(--display);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+
+/* process */
+.process{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;position:relative}
+.process::before{content:"";position:absolute;top:7px;left:0;right:0;height:1px;background:var(--line)}
+.process li{position:relative;display:grid;gap:6px;align-content:start;padding-top:30px}
+.process li::before{content:"";position:absolute;top:2px;left:0;width:11px;height:11px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--paper)}
+.process h3{font-size:1.2rem}
+.process .k{font-weight:600;font-size:.95rem}
+.process p:last-child{color:var(--muted);font-size:.92rem}
+@media (max-width:960px){.process{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:36px}.process::before{display:none}}
+@media (max-width:560px){.process{grid-template-columns:1fr}}
+
+/* scenarios */
+.scen-wrap{margin-top:56px;overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:620px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:18px 16px;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600}
+td.num,th.num{text-align:right;white-space:nowrap}
+.sc-name{font:700 1.25rem var(--display)}
+.sc-name small{display:block;font:italic 500 .85rem var(--body);color:var(--muted)}
+td .desc{color:var(--muted);font-size:.95rem;margin-top:4px}
+.hl{color:var(--accent);font-weight:700}
+.note{margin-top:16px;font-size:.88rem;color:var(--muted)}
+
+/* why */
+.why{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(24px,4vw,48px);margin-top:48px}
+.why div{display:grid;gap:10px;align-content:start;padding-top:20px;border-top:2px solid var(--accent)}
+.why p{color:var(--muted)}
+@media (max-width:820px){.why{grid-template-columns:1fr}}
+
+/* contact */
+.cta .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:48px;align-items:end}
+@media (max-width:820px){.cta .wrap{grid-template-columns:1fr}}
+.contact-box{display:grid;gap:14px;padding:28px;border:1px solid rgba(255,255,255,.2);border-radius:14px}
+.contact-box .row{display:grid;gap:2px}
+.contact-box .row span{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--on-navy-muted)}
+.contact-box .row b{font-weight:600;user-select:all;overflow-wrap:anywhere}
+
+footer{padding-block:40px;font-size:.85rem;color:var(--muted)}
+footer .wrap{display:grid;gap:18px}
+footer .line{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:var(--ink)}
+footer .legal{max-width:90ch}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+.fn{margin-top:20px;font-size:.82rem;color:var(--on-navy-muted);max-width:80ch}
+.fn a,.note a{color:inherit}
+.contact-box a{color:#fff}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 22px}
+footer nav a{color:var(--ink);text-decoration:none;font-weight:500}
+footer nav a:hover{text-decoration:underline}
+.risk{border-top:1px solid var(--line);padding-top:18px;display:grid;gap:8px;max-width:90ch}
+.risk strong{color:var(--ink)}
+/* legal overlays: opened via plain #anchors */
+.legal-page{display:none;position:fixed;inset:0;z-index:20;background:var(--paper);overflow-y:auto;padding-block:calc(env(safe-area-inset-top,0px) + 32px) 64px}
+.legal-page:target{display:block}
+.legal-page .wrap{max-width:780px;display:grid;gap:16px}
+.legal-page h2{font-size:clamp(1.7rem,3vw,2.2rem);margin-top:8px}
+.legal-page h3{font-size:1.15rem;margin-top:16px}
+.legal-page p,.legal-page li{color:var(--muted);font-size:.98rem}
+.legal-page ul{margin:0;padding-left:1.2em;display:grid;gap:6px}
+.legal-page .back{justify-self:start;font-weight:600;color:var(--accent);text-decoration:none}
+.ph{background:color-mix(in srgb,var(--accent) 14%,transparent);color:var(--ink);padding:0 .3em;border-radius:3px}
+.legal-page table{min-width:0}
+.legal-page th,.legal-page td{padding:10px 8px;font-size:.92rem}
+</style>
+<style>img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap nav">
+    <a class="logo" href="#inicio" aria-label="Veston Capital, inicio">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12.5l5.5 6L21 4.5" stroke="currentColor" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      veston
+    </a>
+    <ul>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#modelo">Modelo</a></li>
+      <li><a href="#propuesta">Propuesta</a></li>
+      <li><a href="#escenarios">Escenarios</a></li>
+    </ul>
+    <a class="btn btn-ghost" href="#contacto">Invertir</a>
+  </div>
+</header>
+
+<main>
+<section class="navy hero" id="inicio">
+  <div class="wrap">
+    <p class="eyebrow">Inversión en real estate residencial</p>
+    <h1>Conectamos capital con oportunidades inmobiliarias</h1>
+    <p class="lead">Seleccionamos, compramos, transformamos y vendemos activos residenciales. Tú participas en operaciones concretas, analizadas y respaldadas por el propio inmueble.</p>
+    <div class="actions">
+      <a class="btn btn-light" href="#contacto">Quiero invertir</a>
+      <a class="btn btn-ghost" href="#propuesta">Ver la propuesta</a>
+    </div>
+    <div class="figures" role="list">
+      <div class="fig" role="listitem"><b>11%<sup>*</sup></b><span>Rentabilidad por operación</span></div>
+      <div class="fig" role="listitem"><b>50.000 €</b><span>Inversión mínima</span></div>
+      <div class="fig" role="listitem"><b>12 meses</b><span>Plazo contractual de referencia</span></div>
+      <div class="fig" role="listitem"><b>6–8 meses</b><span>Duración estimada en cartera</span></div>
+    </div>
+    <p class="fn">* Rentabilidad pactada en el contrato de cada operación. No garantizada: depende de la ejecución y venta del activo. <a href="#riesgos">Aviso de riesgos</a>.</p>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap split">
+    <div style="display:grid;gap:20px">
+      <p class="eyebrow">Sobre nosotros</p>
+      <h2>Invertimos en oportunidades inmobiliarias y creamos valor a través de su transformación</h2>
+    </div>
+    <ul class="points">
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12.5l5.5 6L21 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Combinamos experiencia en <strong>consultoría estratégica, M&amp;A, finanzas, real estate y emprendimiento</strong> para analizar de forma integral cada oportunidad de inversión.</p></li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12.5l5.5 6L21 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Nuestro foco es el <strong>mercado residencial</strong>. Identificamos activos con potencial de creación de valor y combinamos criterio inversor, conocimiento local y una red de industriales contrastada para llevar cada operación desde su origen hasta la desinversión.</p></li>
+      <li><svg class="tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12.5l5.5 6L21 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p>Tenemos acceso a <strong>oportunidades off-market</strong> y a una red especializada de profesionales del sector, lo que nos permite analizar y ejecutar operaciones con agilidad.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="navy" id="modelo">
+  <div class="wrap">
+    <p class="eyebrow">Modelo operativo</p>
+    <h2 style="margin-top:16px;max-width:24ch">Un modelo diseñado para identificar, transformar y capitalizar oportunidades rentables</h2>
+    <div class="steps">
+      <div class="step"><span class="n">01</span><h3>Invertir</h3><p class="k">Movilizamos capital hacia oportunidades seleccionadas</p><p>Identificamos operaciones con potencial y estructuramos el acceso al capital necesario para ejecutarlas.</p></div>
+      <div class="step"><span class="n">02</span><h3>Comprar</h3><p class="k">Entramos donde existe margen para crear valor</p><p>Seleccionamos y negociamos activos con una tesis de inversión clara y una estrategia de salida definida.</p></div>
+      <div class="step"><span class="n">03</span><h3>Transformar</h3><p class="k">Convertimos potencial en valor</p><p>Adaptamos el activo a la demanda del mercado, optimizando inversión, plazo y producto final.</p></div>
+      <div class="step"><span class="n">04</span><h3>Vender</h3><p class="k">Materializamos el valor creado</p><p>Ejecutamos la estrategia de salida y convertimos la transformación del activo en resultado para el inversor.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="propuesta">
+  <div class="wrap">
+    <p class="eyebrow">Nuestra propuesta de inversión</p>
+    <h2 style="margin-top:16px;max-width:26ch">Acceso directo a operaciones inmobiliarias analizadas, validadas y preparadas para invertir</h2>
+    <div class="terms">
+      <div class="big">
+        <p class="pct">11%<small>Rentabilidad por operación, según contrato individual*</small></p>
+        <ul class="checks">
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12.5l5.5 6L21 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Capital y retorno se liquidan al cierre de la operación.</span></li>
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12.5l5.5 6L21 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Inversión respaldada por el activo: el inmueble es la garantía de la operación.</span></li>
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12.5l5.5 6L21 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Contrato de préstamo individual por operación, con condiciones definidas desde el inicio.</span></li>
+          <li><svg class="tick" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12.5l5.5 6L21 4.5" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Reporting periódico sobre la evolución de la operación y su comercialización.</span></li>
+        </ul>
+      </div>
+      <dl class="spec">
+        <div><dt>Inversión mínima</dt><dd>50.000 €</dd></div>
+        <div><dt>Plazo contractual de referencia</dt><dd>12 meses</dd></div>
+        <div><dt>Duración estimada de las operaciones en cartera</dt><dd>6–8 meses</dd></div>
+        <div><dt>Por cada mes adicional a partir del mes 12</dt><dd>+1%</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="como-invertir" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Cómo invertir con Veston</p>
+    <h2 style="margin-top:16px">Una operación, paso a paso</h2>
+    <ol class="process">
+      <li><h3>Contacto</h3><p class="k">Nos cuentas tu interés en invertir</p><p>Agendamos una reunión para conocer tu perfil de inversor y resolver dudas.</p></li>
+      <li><h3>Presentación</h3><p class="k">Conoces las oportunidades</p><p>Compartimos el detalle, los números, el horizonte y la estrategia de venta.</p></li>
+      <li><h3>Decisión</h3><p class="k">Seleccionas la operación</p><p>Analizas la oportunidad y el capital que quieres comprometer.</p></li>
+      <li><h3>Firma</h3><p class="k">Formalizas tu inversión</p><p>Te acompañamos en la revisión de las condiciones de participación.</p></li>
+      <li><h3>Ejecución</h3><p class="k">Gestionamos todo el proceso</p><p>Compra, reforma y venta del activo, con reporting periódico del avance.</p></li>
+      <li><h3>Venta</h3><p class="k">Cierre y retorno</p><p>Liquidamos el capital invertido y el retorno conforme a la duración de la operación.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="escenarios" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Escenarios de retorno</p>
+    <h2 style="margin-top:16px">Ejemplo sobre una inversión de 50.000 €</h2>
+    <div class="scen-wrap">
+      <table>
+        <thead><tr><th>Escenario</th><th>Qué ocurre</th><th class="num">Duración</th><th class="num">Retorno</th><th class="num">Anualizado</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="2"><span class="sc-name">Anticipada<small>Escenario A</small></span></td>
+              <td rowspan="2">La operación se completa <strong>antes</strong> de 12 meses<p class="desc">Mantienes el 11% y, al cerrar antes, aumenta la rentabilidad anualizada.</p></td>
+              <td class="num">6 meses</td><td class="num">11%</td><td class="num hl">22%</td></tr>
+          <tr><td class="num">8 meses</td><td class="num">11%</td><td class="num hl">16,5%</td></tr>
+          <tr><td><span class="sc-name">En plazo<small>Escenario B</small></span></td>
+              <td>La operación se completa en 12 meses<p class="desc">Recibes el 11% de retorno al completar la operación.</p></td>
+              <td class="num">12 meses</td><td class="num">11%</td><td class="num">11%</td></tr>
+          <tr><td rowspan="2"><span class="sc-name">Extendida<small>Escenario C</small></span></td>
+              <td rowspan="2">La operación <strong>supera</strong> los 12 meses<p class="desc">Mantienes el 11% inicial y sumas un 1% adicional por cada mes que supere los 12.</p></td>
+              <td class="num">13 meses</td><td class="num hl">12%</td><td class="num">–</td></tr>
+          <tr><td class="num">14 meses</td><td class="num hl">13%</td><td class="num">–</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Ejemplo ilustrativo. Las condiciones de cada operación se fijan en su contrato individual. Las rentabilidades no están garantizadas y dependen de la ejecución y venta del activo. <a href="#riesgos">Ver aviso de riesgos</a>.</p>
+  </div>
+</section>
+
+<section id="por-que" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Por qué Veston</p>
+    <h2 style="margin-top:16px;max-width:24ch">Operaciones concretas, garantía real y transparencia</h2>
+    <div class="why">
+      <div><h3>Acceso off-market</h3><p>Una red especializada del sector nos da acceso a activos fuera del mercado abierto, con margen real para crear valor.</p></div>
+      <div><h3>El inmueble como garantía</h3><p>Cada inversión está respaldada por el activo y se formaliza con un contrato individual con condiciones claras desde el inicio.</p></div>
+      <div><h3>Gestión integral</h3><p>Nos encargamos de la compra, la reforma y la venta, y te informamos periódicamente del avance de la operación.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="navy cta" id="contacto">
+  <div class="wrap">
+    <div style="display:grid;gap:20px">
+      <p class="eyebrow">Contacto</p>
+      <h2>¿Quieres conocer las próximas operaciones?</h2>
+      <p class="lead">Cuéntanos tu interés y agendamos una reunión para conocer tu perfil de inversor, presentarte las oportunidades abiertas y resolver tus dudas.</p>
+    </div>
+    <div class="contact-box">
+      <div class="row"><span>Email</span><b><a href="mailto:veston@vestoncapital.com">veston@vestoncapital.com</a></b></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="line"><strong>Veston Capital</strong><nav aria-label="Legal"><a href="#aviso-legal">Aviso legal</a><a href="#privacidad">Política de privacidad</a><a href="#cookies">Política de cookies</a><a href="#riesgos">Aviso de riesgos</a></nav></div>
+    <div class="risk">
+      <p><strong>Aviso de riesgos.</strong> La información de esta web es orientativa y no constituye una oferta pública, asesoramiento ni recomendación de inversión. Las rentabilidades indicadas se refieren a las condiciones pactadas por operación y no garantizan resultados. Toda inversión inmobiliaria conlleva riesgos, incluida la posible pérdida total o parcial del capital, la falta de liquidez y retrasos en los plazos. Las condiciones de cada operación se recogen en su contrato individual.</p>
+      <p>© 2026 VESTON CAPITAL, S.L. Todos los derechos reservados.</p>
+    </div>
+  </div>
+</footer>
+
+<section class="legal-page" id="aviso-legal" aria-label="Aviso legal">
+  <div class="wrap">
+    <a class="back" href="#inicio">← Volver a la web</a>
+    <h2>Aviso legal</h2>
+    <h3>1. Titular del sitio web</h3>
+    <p>En cumplimiento del artículo 10 de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de los datos del titular de este sitio web:</p>
+    <ul>
+      <li>Razón social: VESTON CAPITAL, S.L. (en constitución)</li>
+      <li>NIF: en trámite (sociedad en constitución)</li>
+      <li>Domicilio social: <span class="ph">[dirección completa]</span></li>
+      <li>Datos registrales: en trámite de inscripción en el Registro Mercantil</li>
+      <li>Email de contacto: veston@vestoncapital.com</li>
+    </ul>
+    <h3>2. Objeto</h3>
+    <p>Este sitio web tiene carácter exclusivamente informativo sobre la actividad de Veston Capital. Su contenido no constituye una oferta pública de valores, una solicitud de fondos al público ni un servicio de asesoramiento financiero. La participación de los inversores se instrumenta mediante contratos de préstamo privados e individuales entre cada inversor y la sociedad, que destina ese capital a la compra, reforma y venta de inmuebles.</p>
+    <h3>3. Condiciones de uso</h3>
+    <p>El acceso a esta web atribuye la condición de usuario e implica la aceptación de este aviso legal. El usuario se compromete a hacer un uso adecuado de los contenidos, conforme a la ley y a la buena fe.</p>
+    <h3>4. Propiedad intelectual e industrial</h3>
+    <p>Los textos, diseños, logotipos y demás contenidos de esta web son titularidad de Veston Capital o se usan con autorización. Queda prohibida su reproducción, distribución o transformación sin autorización expresa.</p>
+    <h3>5. Responsabilidad</h3>
+    <p>Veston Capital procura que la información publicada sea exacta y esté actualizada, pero no se responsabiliza de las decisiones tomadas a partir de ella. Las cifras de rentabilidad, plazos y escenarios son ilustrativos y están sujetos a las condiciones de cada contrato. Veston Capital no se responsabiliza del contenido de webs de terceros enlazadas.</p>
+    <h3>6. Legislación aplicable</h3>
+    <p>Este aviso legal se rige por la legislación española. Para cualquier controversia, las partes se someten a los juzgados y tribunales que correspondan conforme a la normativa aplicable.</p>
+  </div>
+</section>
+
+<section class="legal-page" id="privacidad" aria-label="Política de privacidad">
+  <div class="wrap">
+    <a class="back" href="#inicio">← Volver a la web</a>
+    <h2>Política de privacidad</h2>
+    <p>Conforme al Reglamento (UE) 2016/679 (RGPD) y a la Ley Orgánica 3/2018 (LOPDGDD), te informamos de cómo tratamos tus datos personales.</p>
+    <h3>Responsable del tratamiento</h3>
+    <p>VESTON CAPITAL, S.L. (sociedad en constitución, NIF en trámite), con domicilio en <span class="ph">[dirección]</span>. Email: veston@vestoncapital.com.</p>
+    <h3>Qué datos tratamos</h3>
+    <p>Los datos que nos facilitas al escribirnos por email (nombre, email, teléfono y la información que incluyas sobre tu interés inversor) y, si llegas a invertir, los necesarios para formalizar y gestionar tu participación.</p>
+    <h3>Finalidad</h3>
+    <ul>
+      <li>Atender tus consultas y agendar reuniones.</li>
+      <li>Presentarte oportunidades de inversión que hayas solicitado.</li>
+      <li>Formalizar y gestionar los contratos de préstamo, liquidar capital e intereses y enviarte el reporting de cada operación.</li>
+      <li>Cumplir las obligaciones legales aplicables, incluidas las fiscales (retenciones e información a la Agencia Tributaria) y las de prevención del blanqueo de capitales.</li>
+    </ul>
+    <h3>Base legal</h3>
+    <p>Tu consentimiento al contactarnos, la aplicación de medidas precontractuales y la ejecución del contrato, y el cumplimiento de obligaciones legales.</p>
+    <h3>Conservación</h3>
+    <p>Conservamos los datos mientras dure la relación y, después, durante los plazos legales de prescripción y conservación obligatoria.</p>
+    <h3>Destinatarios</h3>
+    <p>No cedemos datos a terceros salvo obligación legal. Pueden acceder a ellos proveedores que nos prestan servicios (por ejemplo, alojamiento web y correo electrónico) con los que tenemos contratos de encargo de tratamiento.</p>
+    <h3>Tus derechos</h3>
+    <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a veston@vestoncapital.com. Si consideras que no hemos atendido correctamente tu solicitud, puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es).</p>
+  </div>
+</section>
+
+<section class="legal-page" id="cookies" aria-label="Política de cookies">
+  <div class="wrap">
+    <a class="back" href="#inicio">← Volver a la web</a>
+    <h2>Política de cookies</h2>
+    <p>Esta web no utiliza cookies propias ni de terceros con fines analíticos, publicitarios o de seguimiento.</p>
+    <p>Solo podrían instalarse cookies técnicas estrictamente necesarias para el funcionamiento y la seguridad del sitio, que, conforme al artículo 22.2 de la LSSI-CE, no requieren consentimiento.</p>
+    <h3>Si en el futuro usamos otras cookies</h3>
+    <p>Si incorporamos herramientas de analítica u otras cookies no necesarias, actualizaremos esta política e incluiremos un banner que te permita aceptarlas, rechazarlas o configurarlas antes de su instalación.</p>
+    <h3>Cómo gestionar las cookies</h3>
+    <p>Puedes bloquear o eliminar las cookies desde la configuración de tu navegador (Chrome, Safari, Firefox o Edge).</p>
+  </div>
+</section>
+
+<section class="legal-page" id="riesgos" aria-label="Aviso de riesgos">
+  <div class="wrap">
+    <a class="back" href="#inicio">← Volver a la web</a>
+    <h2>Aviso de riesgos</h2>
+    <p>Antes de invertir, lee con atención esta información y el contrato de cada operación. Si lo necesitas, consulta con un asesor independiente.</p>
+    <ul>
+      <li><strong>Naturaleza de la inversión.</strong> Inviertes mediante un préstamo a la sociedad. La devolución del capital y de los intereses depende de la capacidad de pago de la sociedad y del resultado de la operación. Tu posición como acreedor y las garantías aplicables son las que establezca tu contrato.</li>
+      <li><strong>Riesgo de pérdida de capital.</strong> Aunque cada operación está respaldada por un inmueble, el valor del activo puede bajar y podrías perder parte o la totalidad del capital aportado.</li>
+      <li><strong>Rentabilidad no garantizada.</strong> Las rentabilidades indicadas son las pactadas por operación y dependen de que la compra, reforma y venta se ejecuten según lo previsto.</li>
+      <li><strong>Riesgo de plazo.</strong> La duración estimada de 6 a 8 meses y el plazo de referencia de 12 meses pueden alargarse por la evolución del mercado, licencias, obras o la propia venta.</li>
+      <li><strong>Falta de liquidez.</strong> No es posible recuperar el capital prestado antes del cierre de la operación, salvo lo que prevea el contrato.</li>
+      <li><strong>Concentración.</strong> Cada inversión se refiere a un único activo, sin diversificación.</li>
+      <li><strong>Fiscalidad.</strong> Los intereses que recibas tributan según la normativa vigente y pueden estar sujetos a retención.</li>
+      <li><strong>Rentabilidades pasadas.</strong> Los resultados de operaciones anteriores no garantizan resultados futuros.</li>
+    </ul>
+    <p>La información de esta web no constituye una oferta pública ni asesoramiento financiero, fiscal o legal.</p>
+  </div>
+</section>
+</body>
+</html>
